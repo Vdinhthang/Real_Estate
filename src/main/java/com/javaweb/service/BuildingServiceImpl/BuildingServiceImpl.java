@@ -7,9 +7,11 @@ import com.javaweb.repository.entity.BuildingEntity;
 import com.javaweb.service.BuildingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BuildingServiceImpl implements BuildingService {
@@ -17,8 +19,8 @@ public class BuildingServiceImpl implements BuildingService {
     private BuildingRepository buildingRepository;
 
     @Override
-    public List<BuildingDTO> findAll(String name, Long districtid) {
-        List<BuildingEntity> buildingEntities = buildingRepository.findAll(name, districtid);
+    public List<BuildingDTO> findAll(Map<String, Object> params, List<String> typeCode) {
+        List<BuildingEntity> buildingEntities = buildingRepository.findAll(params, typeCode);
         List<BuildingDTO> result = new ArrayList<>();
         for (BuildingEntity item : buildingEntities) {
             BuildingDTO building = new BuildingDTO();

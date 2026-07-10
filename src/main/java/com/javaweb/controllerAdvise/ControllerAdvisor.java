@@ -21,7 +21,7 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
         List<String> details = new ArrayList<>();
         details.add("Interger number can not be divide to zero");
         errorResponse.setDetails(details);
-        return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_GATEWAY);
     }
     @ExceptionHandler(FieldRequiredException.class)
     public ResponseEntity<Object> handleFieldRequireException(FieldRequiredException ex, WebRequest re) {
